@@ -71,6 +71,7 @@
     <Compile Include="Matrices.Designer.cs">
       <DependentUpon>Matrices.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\MmatricesVehiculo.cs" />
     <Compile Include="Pilas.cs">
       <SubType>Form</SubType>
     </Compile>
