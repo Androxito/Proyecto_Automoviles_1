@@ -265,6 +265,7 @@
             // 
             // txtCombustible
             // 
+            this.txtCombustible.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtCombustible.FormattingEnabled = true;
             this.txtCombustible.Items.AddRange(new object[] {
             "",
@@ -345,9 +346,9 @@
             // dgVehiculo
             // 
             this.dgVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgVehiculo.Location = new System.Drawing.Point(341, 226);
+            this.dgVehiculo.Location = new System.Drawing.Point(305, 226);
             this.dgVehiculo.Name = "dgVehiculo";
-            this.dgVehiculo.Size = new System.Drawing.Size(429, 182);
+            this.dgVehiculo.Size = new System.Drawing.Size(465, 182);
             this.dgVehiculo.TabIndex = 23;
             // 
             // label6
@@ -365,6 +366,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(116, 20);
             this.txtPrecio.TabIndex = 29;
+            this.txtPrecio.Text = "0";
             // 
             // rprecio
             // 

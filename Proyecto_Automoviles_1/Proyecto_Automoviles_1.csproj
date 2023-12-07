@@ -80,6 +80,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Todo de colas\modelVechiculo.cs" />
+    <Compile Include="Todo de colas\NodoCola.cs" />
     <EmbeddedResource Include="Colas.resx">
       <DependentUpon>Colas.cs</DependentUpon>
     </EmbeddedResource>

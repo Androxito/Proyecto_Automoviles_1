@@ -101,9 +101,17 @@ namespace Proyecto_Automoviles_1
         //boton de agregar
         private void btnAgregarVehiculo(object sender, EventArgs e)
         {
-            AgregarVehiculo();
-            MostrarVehiculos();
-            Limpiar();
+            if (txtModelo.Text != string.Empty && txtMarca.Text != string.Empty && txtyear.Text != string.Empty && txtCombustible.Text != string.Empty)
+            {
+                AgregarVehiculo();
+                MostrarVehiculos();
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Debe de ingresar datos en todos los campos", "Ok", MessageBoxButtons.OK);
+            }
+            
         }
         //metodo de limpiar campos
         private void Limpiar()
@@ -113,7 +121,7 @@ namespace Proyecto_Automoviles_1
             txtMarca.Text = "";
             txtyear.Text = "";
             txtCombustible.Text = "";
-            txtPrecio.Text = "";
+            txtPrecio.Text = "0";
         }
         //metodo de mostrar el registro en una fila del DGV
         private void MostrarVehiculos()
@@ -159,9 +167,16 @@ namespace Proyecto_Automoviles_1
         //boton agregar
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            AgregarVehiculo();
-            MostrarVehiculos();
-            Limpiar();
+            if (txtModelo.Text != string.Empty && txtMarca.Text != string.Empty && txtyear.Text != string.Empty && txtCombustible.Text != string.Empty)
+            {
+                AgregarVehiculo();
+                MostrarVehiculos();
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Debe de ingresar datos en todos los campos", "Ok", MessageBoxButtons.OK);
+            }
         }
         //boton eliminar
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -174,16 +189,15 @@ namespace Proyecto_Automoviles_1
         {
             if (dgVehiculo.CurrentRow != null)
             {
-                int indiceEliminar = dgVehiculo.CurrentRow.Index;
 
-                if (indiceEliminar >= 0)
-                {
-                    // Elimina la fila del DataGridView
-                    dgVehiculo.Rows.RemoveAt(indiceEliminar);
-                    contadorVehiculos--;
+                int indiceEliminar = 1 + dgVehiculo.CurrentRow.Index;
+                // Elimina la fila del DataGridView
+                dgVehiculo.Rows.RemoveAt(indiceEliminar);
+                contadorVehiculos--;
 
-                    Limpiar();
-                }
+                Limpiar();
+
+
             }
             else
             {
@@ -193,9 +207,16 @@ namespace Proyecto_Automoviles_1
         //boton editar
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Editar();
-            MostrarVehiculos();
-            Limpiar();
+            if (txtModelo.Text != string.Empty && txtMarca.Text != string.Empty && txtyear.Text != string.Empty && txtCombustible.Text != string.Empty)
+            {
+                Editar();
+                MostrarVehiculos();
+                Limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Debe de ingresar datos en todos los campos", "Ok", MessageBoxButtons.OK);
+            }
         }
         //metodo editar
         private void Editar()
