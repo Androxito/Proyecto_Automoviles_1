@@ -29,6 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnOrdenar = new System.Windows.Forms.Button();
+            this.descendente = new System.Windows.Forms.RadioButton();
+            this.ascendente = new System.Windows.Forms.RadioButton();
+            this.buscador = new System.Windows.Forms.TextBox();
+            this.rmodelo = new System.Windows.Forms.RadioButton();
+            this.rprecio = new System.Windows.Forms.RadioButton();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtCombustible = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtyear = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.txtModelo = new System.Windows.Forms.TextBox();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,28 +63,13 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.txtCombustible = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtyear = new System.Windows.Forms.TextBox();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtModelo = new System.Windows.Forms.TextBox();
             this.dgVehiculo = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.rprecio = new System.Windows.Forms.RadioButton();
-            this.rmodelo = new System.Windows.Forms.RadioButton();
-            this.buscador = new System.Windows.Forms.TextBox();
-            this.ascendente = new System.Windows.Forms.RadioButton();
-            this.descendente = new System.Windows.Forms.RadioButton();
-            this.btnOrdenar = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.IDs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MODELO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MARCA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AÑO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COMBUSTIBLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
@@ -73,6 +79,233 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgVehiculo)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(225, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.TabIndex = 59;
+            this.label7.Text = "Buscar por:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // btnOrdenar
+            // 
+            this.btnOrdenar.Location = new System.Drawing.Point(225, 280);
+            this.btnOrdenar.Name = "btnOrdenar";
+            this.btnOrdenar.Size = new System.Drawing.Size(75, 23);
+            this.btnOrdenar.TabIndex = 58;
+            this.btnOrdenar.Text = "Ordenar";
+            this.btnOrdenar.UseVisualStyleBackColor = true;
+            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
+            // 
+            // descendente
+            // 
+            this.descendente.AutoSize = true;
+            this.descendente.Location = new System.Drawing.Point(225, 254);
+            this.descendente.Name = "descendente";
+            this.descendente.Size = new System.Drawing.Size(89, 17);
+            this.descendente.TabIndex = 57;
+            this.descendente.TabStop = true;
+            this.descendente.Text = "Descendente";
+            this.descendente.UseVisualStyleBackColor = true;
+            this.descendente.CheckedChanged += new System.EventHandler(this.descendente_CheckedChanged);
+            // 
+            // ascendente
+            // 
+            this.ascendente.AutoSize = true;
+            this.ascendente.Location = new System.Drawing.Point(225, 225);
+            this.ascendente.Name = "ascendente";
+            this.ascendente.Size = new System.Drawing.Size(82, 17);
+            this.ascendente.TabIndex = 56;
+            this.ascendente.TabStop = true;
+            this.ascendente.Text = "Ascendente";
+            this.ascendente.UseVisualStyleBackColor = true;
+            this.ascendente.CheckedChanged += new System.EventHandler(this.ascendente_CheckedChanged);
+            // 
+            // buscador
+            // 
+            this.buscador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buscador.ForeColor = System.Drawing.Color.Blue;
+            this.buscador.Location = new System.Drawing.Point(225, 103);
+            this.buscador.Name = "buscador";
+            this.buscador.Size = new System.Drawing.Size(100, 20);
+            this.buscador.TabIndex = 55;
+            this.buscador.TextChanged += new System.EventHandler(this.buscador_TextChanged);
+            // 
+            // rmodelo
+            // 
+            this.rmodelo.AutoSize = true;
+            this.rmodelo.BackColor = System.Drawing.Color.MediumOrchid;
+            this.rmodelo.Location = new System.Drawing.Point(225, 72);
+            this.rmodelo.Name = "rmodelo";
+            this.rmodelo.Size = new System.Drawing.Size(60, 17);
+            this.rmodelo.TabIndex = 54;
+            this.rmodelo.TabStop = true;
+            this.rmodelo.Text = "Modelo";
+            this.rmodelo.UseVisualStyleBackColor = false;
+            this.rmodelo.CheckedChanged += new System.EventHandler(this.rmodelo_CheckedChanged);
+            // 
+            // rprecio
+            // 
+            this.rprecio.AutoSize = true;
+            this.rprecio.BackColor = System.Drawing.Color.SpringGreen;
+            this.rprecio.Location = new System.Drawing.Point(225, 48);
+            this.rprecio.Name = "rprecio";
+            this.rprecio.Size = new System.Drawing.Size(55, 17);
+            this.rprecio.TabIndex = 53;
+            this.rprecio.TabStop = true;
+            this.rprecio.Text = "Precio";
+            this.rprecio.UseVisualStyleBackColor = false;
+            this.rprecio.CheckedChanged += new System.EventHandler(this.rprecio_CheckedChanged);
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(591, 180);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(116, 20);
+            this.txtPrecio.TabIndex = 52;
+            this.txtPrecio.Text = "0";
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(512, 180);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 51;
+            this.label6.Text = "Precio:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(356, 130);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 50;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(356, 86);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 49;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(225, 138);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
+            this.btnConsultar.TabIndex = 48;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(356, 43);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 47;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // txtCombustible
+            // 
+            this.txtCombustible.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtCombustible.FormattingEnabled = true;
+            this.txtCombustible.Items.AddRange(new object[] {
+            "",
+            "Gasolina",
+            "Petroleo",
+            "Energia Electrica",
+            "Desconocido"});
+            this.txtCombustible.Location = new System.Drawing.Point(621, 140);
+            this.txtCombustible.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCombustible.Name = "txtCombustible";
+            this.txtCombustible.Size = new System.Drawing.Size(140, 21);
+            this.txtCombustible.TabIndex = 45;
+            this.txtCombustible.SelectedIndexChanged += new System.EventHandler(this.txtCombustible_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(509, 140);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "Combustible Utilizado:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(512, 96);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Año:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(509, 51);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Marca:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(509, 9);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "Modelo";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // txtyear
+            // 
+            this.txtyear.Location = new System.Drawing.Point(591, 96);
+            this.txtyear.Margin = new System.Windows.Forms.Padding(4);
+            this.txtyear.Name = "txtyear";
+            this.txtyear.Size = new System.Drawing.Size(116, 20);
+            this.txtyear.TabIndex = 40;
+            this.txtyear.TextChanged += new System.EventHandler(this.txtyear_TextChanged);
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(591, 51);
+            this.txtMarca.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(116, 20);
+            this.txtMarca.TabIndex = 39;
+            this.txtMarca.TextChanged += new System.EventHandler(this.txtMarca_TextChanged);
+            // 
+            // txtModelo
+            // 
+            this.txtModelo.Location = new System.Drawing.Point(591, 9);
+            this.txtModelo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(116, 20);
+            this.txtModelo.TabIndex = 38;
+            this.txtModelo.TextChanged += new System.EventHandler(this.txtModelo_TextChanged);
             // 
             // sidebar
             // 
@@ -88,7 +321,8 @@
             this.sidebar.MinimumSize = new System.Drawing.Size(62, 450);
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(204, 450);
-            this.sidebar.TabIndex = 2;
+            this.sidebar.TabIndex = 37;
+            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
             // 
             // panel1
             // 
@@ -120,7 +354,6 @@
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.menuButton.TabIndex = 0;
             this.menuButton.TabStop = false;
-            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // panel2
             // 
@@ -144,7 +377,6 @@
             this.btnMatrices.Text = "               Matrices";
             this.btnMatrices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMatrices.UseVisualStyleBackColor = true;
-            this.btnMatrices.Click += new System.EventHandler(this.btnMatrices_Click);
             // 
             // panel4
             // 
@@ -168,7 +400,6 @@
             this.button2.Text = "               Listas Enlazadas";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel5
             // 
@@ -192,7 +423,6 @@
             this.button3.Text = "               Pilas";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel6
             // 
@@ -216,238 +446,62 @@
             this.button4.Text = "               Colas";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // sidebarTimer
             // 
             this.sidebarTimer.Interval = 10;
-            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Ticks);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(341, 130);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 27;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(341, 86);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 26;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Location = new System.Drawing.Point(210, 138);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(75, 23);
-            this.btnConsultar.TabIndex = 25;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(341, 43);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 24;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // txtCombustible
-            // 
-            this.txtCombustible.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtCombustible.FormattingEnabled = true;
-            this.txtCombustible.Items.AddRange(new object[] {
-            "",
-            "Gasolina",
-            "Petroleo",
-            "Energia Electrica",
-            "Desconocido"});
-            this.txtCombustible.Location = new System.Drawing.Point(606, 140);
-            this.txtCombustible.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCombustible.Name = "txtCombustible";
-            this.txtCombustible.Size = new System.Drawing.Size(140, 21);
-            this.txtCombustible.TabIndex = 22;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(494, 140);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Combustible Utilizado:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(497, 96);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Año:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(494, 51);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Marca:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(494, 9);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Modelo";
-            // 
-            // txtyear
-            // 
-            this.txtyear.Location = new System.Drawing.Point(576, 96);
-            this.txtyear.Margin = new System.Windows.Forms.Padding(4);
-            this.txtyear.Name = "txtyear";
-            this.txtyear.Size = new System.Drawing.Size(116, 20);
-            this.txtyear.TabIndex = 17;
-            // 
-            // txtMarca
-            // 
-            this.txtMarca.Location = new System.Drawing.Point(576, 51);
-            this.txtMarca.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(116, 20);
-            this.txtMarca.TabIndex = 16;
-            // 
-            // txtModelo
-            // 
-            this.txtModelo.Location = new System.Drawing.Point(576, 9);
-            this.txtModelo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(116, 20);
-            this.txtModelo.TabIndex = 15;
             // 
             // dgVehiculo
             // 
             this.dgVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgVehiculo.Location = new System.Drawing.Point(305, 226);
+            this.dgVehiculo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDs,
+            this.MODELO,
+            this.MARCA,
+            this.AÑO,
+            this.COMBUSTIBLE,
+            this.PRECIO});
+            this.dgVehiculo.Location = new System.Drawing.Point(333, 267);
             this.dgVehiculo.Name = "dgVehiculo";
-            this.dgVehiculo.Size = new System.Drawing.Size(465, 182);
-            this.dgVehiculo.TabIndex = 23;
+            this.dgVehiculo.Size = new System.Drawing.Size(464, 171);
+            this.dgVehiculo.TabIndex = 60;
             // 
-            // label6
+            // IDs
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(497, 180);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Precio:";
+            this.IDs.HeaderText = "IDs";
+            this.IDs.Name = "IDs";
             // 
-            // txtPrecio
+            // MODELO
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(576, 180);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(116, 20);
-            this.txtPrecio.TabIndex = 29;
-            this.txtPrecio.Text = "0";
+            this.MODELO.HeaderText = "MODELO";
+            this.MODELO.Name = "MODELO";
             // 
-            // rprecio
+            // MARCA
             // 
-            this.rprecio.AutoSize = true;
-            this.rprecio.BackColor = System.Drawing.Color.SpringGreen;
-            this.rprecio.Location = new System.Drawing.Point(210, 48);
-            this.rprecio.Name = "rprecio";
-            this.rprecio.Size = new System.Drawing.Size(55, 17);
-            this.rprecio.TabIndex = 30;
-            this.rprecio.TabStop = true;
-            this.rprecio.Text = "Precio";
-            this.rprecio.UseVisualStyleBackColor = false;
+            this.MARCA.HeaderText = "MARCA";
+            this.MARCA.Name = "MARCA";
             // 
-            // rmodelo
+            // AÑO
             // 
-            this.rmodelo.AutoSize = true;
-            this.rmodelo.BackColor = System.Drawing.Color.MediumOrchid;
-            this.rmodelo.Location = new System.Drawing.Point(210, 72);
-            this.rmodelo.Name = "rmodelo";
-            this.rmodelo.Size = new System.Drawing.Size(60, 17);
-            this.rmodelo.TabIndex = 31;
-            this.rmodelo.TabStop = true;
-            this.rmodelo.Text = "Modelo";
-            this.rmodelo.UseVisualStyleBackColor = false;
+            this.AÑO.HeaderText = "AÑO";
+            this.AÑO.Name = "AÑO";
             // 
-            // buscador
+            // COMBUSTIBLE
             // 
-            this.buscador.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buscador.ForeColor = System.Drawing.Color.Blue;
-            this.buscador.Location = new System.Drawing.Point(210, 103);
-            this.buscador.Name = "buscador";
-            this.buscador.Size = new System.Drawing.Size(100, 20);
-            this.buscador.TabIndex = 32;
+            this.COMBUSTIBLE.HeaderText = "COMBUSTIBLE";
+            this.COMBUSTIBLE.Name = "COMBUSTIBLE";
             // 
-            // ascendente
+            // PRECIO
             // 
-            this.ascendente.AutoSize = true;
-            this.ascendente.Location = new System.Drawing.Point(210, 225);
-            this.ascendente.Name = "ascendente";
-            this.ascendente.Size = new System.Drawing.Size(82, 17);
-            this.ascendente.TabIndex = 33;
-            this.ascendente.TabStop = true;
-            this.ascendente.Text = "Ascendente";
-            this.ascendente.UseVisualStyleBackColor = true;
-            // 
-            // descendente
-            // 
-            this.descendente.AutoSize = true;
-            this.descendente.Location = new System.Drawing.Point(210, 254);
-            this.descendente.Name = "descendente";
-            this.descendente.Size = new System.Drawing.Size(89, 17);
-            this.descendente.TabIndex = 34;
-            this.descendente.TabStop = true;
-            this.descendente.Text = "Descendente";
-            this.descendente.UseVisualStyleBackColor = true;
-            // 
-            // btnOrdenar
-            // 
-            this.btnOrdenar.Location = new System.Drawing.Point(210, 280);
-            this.btnOrdenar.Name = "btnOrdenar";
-            this.btnOrdenar.Size = new System.Drawing.Size(75, 23);
-            this.btnOrdenar.TabIndex = 35;
-            this.btnOrdenar.Text = "Ordenar";
-            this.btnOrdenar.UseVisualStyleBackColor = true;
-            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(210, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "Buscar por:";
+            this.PRECIO.HeaderText = "PRECIO";
+            this.PRECIO.Name = "PRECIO";
             // 
             // Matrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgVehiculo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnOrdenar);
             this.Controls.Add(this.descendente);
@@ -461,7 +515,6 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.dgVehiculo);
             this.Controls.Add(this.txtCombustible);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -473,7 +526,6 @@
             this.Controls.Add(this.sidebar);
             this.Name = "Matrices";
             this.Text = "Matrices";
-            this.Load += new System.EventHandler(this.Matrices_Load);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -490,6 +542,27 @@
 
         #endregion
 
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnOrdenar;
+        private System.Windows.Forms.RadioButton descendente;
+        private System.Windows.Forms.RadioButton ascendente;
+        private System.Windows.Forms.TextBox buscador;
+        private System.Windows.Forms.RadioButton rmodelo;
+        private System.Windows.Forms.RadioButton rprecio;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnConsultar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.ComboBox txtCombustible;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtyear;
+        private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.FlowLayoutPanel sidebar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
@@ -503,27 +576,12 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Timer sidebarTimer;
-        private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnConsultar;
-        private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.ComboBox txtCombustible;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtyear;
-        private System.Windows.Forms.TextBox txtMarca;
-        private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.DataGridView dgVehiculo;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.RadioButton rprecio;
-        private System.Windows.Forms.RadioButton rmodelo;
-        private System.Windows.Forms.TextBox buscador;
-        private System.Windows.Forms.RadioButton ascendente;
-        private System.Windows.Forms.RadioButton descendente;
-        private System.Windows.Forms.Button btnOrdenar;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MODELO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MARCA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AÑO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COMBUSTIBLE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRECIO;
     }
 }
