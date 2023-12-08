@@ -61,13 +61,6 @@
             this.txtAño = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
-            this.ordenarPrecio = new System.Windows.Forms.Button();
-            this.BuscarModelPrecio = new System.Windows.Forms.TextBox();
-            this.rPrecio = new System.Windows.Forms.RadioButton();
-            this.rModelo = new System.Windows.Forms.RadioButton();
-            this.Descendente = new System.Windows.Forms.RadioButton();
-            this.Ascendente = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.sidebar.SuspendLayout();
@@ -237,6 +230,7 @@
             this.btnModificar.TabIndex = 27;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -250,12 +244,13 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(227, 143);
+            this.btnConsultar.Location = new System.Drawing.Point(359, 206);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 25;
-            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.Text = "Refresh";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnAgregar
             // 
@@ -392,77 +387,6 @@
             this.txtModelo.Size = new System.Drawing.Size(116, 20);
             this.txtModelo.TabIndex = 15;
             // 
-            // ordenarPrecio
-            // 
-            this.ordenarPrecio.Location = new System.Drawing.Point(227, 230);
-            this.ordenarPrecio.Name = "ordenarPrecio";
-            this.ordenarPrecio.Size = new System.Drawing.Size(75, 23);
-            this.ordenarPrecio.TabIndex = 28;
-            this.ordenarPrecio.Text = "Ordenar";
-            this.ordenarPrecio.UseVisualStyleBackColor = true;
-            // 
-            // BuscarModelPrecio
-            // 
-            this.BuscarModelPrecio.Location = new System.Drawing.Point(227, 103);
-            this.BuscarModelPrecio.Name = "BuscarModelPrecio";
-            this.BuscarModelPrecio.Size = new System.Drawing.Size(100, 20);
-            this.BuscarModelPrecio.TabIndex = 29;
-            // 
-            // rPrecio
-            // 
-            this.rPrecio.AutoSize = true;
-            this.rPrecio.BackColor = System.Drawing.Color.Lime;
-            this.rPrecio.Location = new System.Drawing.Point(227, 80);
-            this.rPrecio.Name = "rPrecio";
-            this.rPrecio.Size = new System.Drawing.Size(55, 17);
-            this.rPrecio.TabIndex = 30;
-            this.rPrecio.TabStop = true;
-            this.rPrecio.Text = "Precio";
-            this.rPrecio.UseVisualStyleBackColor = false;
-            // 
-            // rModelo
-            // 
-            this.rModelo.AutoSize = true;
-            this.rModelo.BackColor = System.Drawing.Color.MediumPurple;
-            this.rModelo.Location = new System.Drawing.Point(227, 57);
-            this.rModelo.Name = "rModelo";
-            this.rModelo.Size = new System.Drawing.Size(60, 17);
-            this.rModelo.TabIndex = 31;
-            this.rModelo.TabStop = true;
-            this.rModelo.Text = "Modelo";
-            this.rModelo.UseVisualStyleBackColor = false;
-            // 
-            // Descendente
-            // 
-            this.Descendente.AutoSize = true;
-            this.Descendente.Location = new System.Drawing.Point(227, 206);
-            this.Descendente.Name = "Descendente";
-            this.Descendente.Size = new System.Drawing.Size(89, 17);
-            this.Descendente.TabIndex = 32;
-            this.Descendente.TabStop = true;
-            this.Descendente.Text = "Descendente";
-            this.Descendente.UseVisualStyleBackColor = true;
-            // 
-            // Ascendente
-            // 
-            this.Ascendente.AutoSize = true;
-            this.Ascendente.Location = new System.Drawing.Point(227, 183);
-            this.Ascendente.Name = "Ascendente";
-            this.Ascendente.Size = new System.Drawing.Size(82, 17);
-            this.Ascendente.TabIndex = 33;
-            this.Ascendente.TabStop = true;
-            this.Ascendente.Text = "Ascendente";
-            this.Ascendente.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(227, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "Buscar por:";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -488,13 +412,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.Ascendente);
-            this.Controls.Add(this.Descendente);
-            this.Controls.Add(this.rModelo);
-            this.Controls.Add(this.rPrecio);
-            this.Controls.Add(this.BuscarModelPrecio);
-            this.Controls.Add(this.ordenarPrecio);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnConsultar);
@@ -553,13 +470,6 @@
         private System.Windows.Forms.TextBox txtAño;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.TextBox txtModelo;
-        private System.Windows.Forms.Button ordenarPrecio;
-        private System.Windows.Forms.TextBox BuscarModelPrecio;
-        private System.Windows.Forms.RadioButton rPrecio;
-        private System.Windows.Forms.RadioButton rModelo;
-        private System.Windows.Forms.RadioButton Descendente;
-        private System.Windows.Forms.RadioButton Ascendente;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;

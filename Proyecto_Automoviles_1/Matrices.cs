@@ -137,31 +137,38 @@ namespace Proyecto_Automoviles_1
         //metodo agregar
         private void AgregarVehiculo()
         {
-            if (contadorVehiculos < vehiculos.Length)
+            try
             {
-                string modelo = txtModelo.Text;
-                string marca = txtMarca.Text;
-                string year = txtyear.Text;
-                string combustible = txtCombustible.Text;
-                int precio = Convert.ToInt32(txtPrecio.Text);
-
-                MmatricesVehiculo nuevoVehiculo = new MmatricesVehiculo
+                if (contadorVehiculos < vehiculos.Length)
                 {
-                    Id = ++Id,
-                    modelo = modelo,
-                    marca = marca,
-                    yeart = year,
-                    combustible = combustible,
-                    precio = precio
-                };
-                vehiculos[contadorVehiculos] = nuevoVehiculo;
-                contadorVehiculos++;
+                    string modelo = txtModelo.Text;
+                    string marca = txtMarca.Text;
+                    string year = txtyear.Text;
+                    string combustible = txtCombustible.Text;
+                    int precio = Convert.ToInt32(txtPrecio.Text);
 
-                
+                    MmatricesVehiculo nuevoVehiculo = new MmatricesVehiculo
+                    {
+                        Id = ++Id,
+                        modelo = modelo,
+                        marca = marca,
+                        yeart = year,
+                        combustible = combustible,
+                        precio = precio
+                    };
+                    vehiculos[contadorVehiculos] = nuevoVehiculo;
+                    contadorVehiculos++;
+
+
+                }
+                else
+                {
+                    MessageBox.Show("No se pueden agregar más Vehiculos alcanzo su Límite alcanzado.", "Campos vacios", MessageBoxButtons.OK);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("No se pueden agregar más Vehiculos alcanzo su Límite alcanzado.");
+                    MessageBox.Show("Debe ingresar el precio con numeros enteros.", "Dato erroneo", MessageBoxButtons.OK);
             }
         }
         //boton agregar
@@ -175,7 +182,7 @@ namespace Proyecto_Automoviles_1
             }
             else
             {
-                MessageBox.Show("Debe de ingresar datos en todos los campos", "Ok", MessageBoxButtons.OK);
+                MessageBox.Show("Debe de ingresar datos en todos los campos", "Campos vacios", MessageBoxButtons.OK);
             }
         }
         //boton eliminar
@@ -187,21 +194,28 @@ namespace Proyecto_Automoviles_1
         }
         private void EliminarVehiculo()
         {
-            if (dgVehiculo.CurrentRow != null)
+            try
             {
+                if (dgVehiculo.CurrentRow != null)
+                {
 
-                int indiceEliminar = 1 + dgVehiculo.CurrentRow.Index;
-                // Elimina la fila del DataGridView
-                dgVehiculo.Rows.RemoveAt(indiceEliminar);
-                contadorVehiculos--;
+                    Id = dgVehiculo.CurrentRow.Index;
+                    // Elimina la fila del DataGridView
+                    dgVehiculo.Rows.RemoveAt(Id);
+                    contadorVehiculos--;
 
-                Limpiar();
+                    Limpiar();
 
 
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un vehículo para eliminar.", "Fallo eliminar", MessageBoxButtons.OK);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Seleccione un vehículo para eliminar.");
+                MessageBox.Show("Seleccion erronea. Debe seleccionar una sola fila completa", "Fallo eliminar", MessageBoxButtons.OK);
             }
         }
         //boton editar
@@ -215,18 +229,31 @@ namespace Proyecto_Automoviles_1
             }
             else
             {
-                MessageBox.Show("Debe de ingresar datos en todos los campos", "Ok", MessageBoxButtons.OK);
+                MessageBox.Show("Debe de ingresar datos en todos los campos", "Campos vacios", MessageBoxButtons.OK);
             }
+        }
+        public bool seleccion()
+        {
+            if (dgVehiculo.CurrentRow.Index == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            
         }
         //metodo editar
         private void Editar()
         {
             try
             {
-                Id = 1 + dgVehiculo.CurrentRow.Index;
+                
                 //tiene que seleccionar una linea entera a fuerza que no sea el apartado de las columnas
-                if (dgVehiculo.SelectedRows.Count >= 0)
+                if (dgVehiculo.SelectedRows.Count >= 0 && seleccion() == true)
                 {
+                    Id = 1 + dgVehiculo.CurrentRow.Index;
                     int indiceModificar = -1;
                     for (int i = 0; i < contadorVehiculos; i++)
                     {
@@ -244,23 +271,26 @@ namespace Proyecto_Automoviles_1
                         vehiculos[indiceModificar - 1].combustible = txtCombustible.Text;
                         vehiculos[indiceModificar - 1].precio =Convert.ToInt32(txtPrecio.Text);
                         MostrarVehiculos();
-                        MessageBox.Show("Edición Exitosa!");
+                        MessageBox.Show("Edición Exitosa!", "Ok", MessageBoxButtons.OK);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Seleccione un vehículo para editar.");
-                }
+                
             }
             catch 
             {
-                MessageBox.Show("Error de introduccion de dato");
+                MessageBox.Show("Error de introduccion de dato del campo de precio. Tambien puede ser por la seleccion de multiples id a la vez: Seleccione una fila completa", "Dato erroneo", MessageBoxButtons.OK);
             }
         }
         //boton de consultar por ya sea del precio o el modelo
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            consultaPrecioModelo();
+            if (contadorVehiculos > 0) {
+                consultaPrecioModelo();
+            }
+            else
+            {
+                MessageBox.Show("No hay vehiculos ingresados", "Sin Registros", MessageBoxButtons.OK);
+            }
         }
         private void consultaPrecioModelo()
         {
@@ -274,7 +304,7 @@ namespace Proyecto_Automoviles_1
             }
             else
             {
-                MessageBox.Show("Da click en la opcion Ascendente o la Descendente");
+                MessageBox.Show("Da click en la opcion Ascendente o la Descendente", "Seleccion", MessageBoxButtons.OK);
             }
 
         }
@@ -282,7 +312,7 @@ namespace Proyecto_Automoviles_1
         {
             if (buscador.Text == string.Empty)
             {
-                MessageBox.Show("Ingrese el modelo que busca, por favor.");
+                MessageBox.Show("Ingrese el modelo que busca, por favor.", "Buscador vacio:", MessageBoxButtons.OK);
             }
             else
             {
@@ -307,7 +337,7 @@ namespace Proyecto_Automoviles_1
                 if (!encontrado)
                 {
                     buscador.Text = string.Empty;
-                    MessageBox.Show("No se encontro un Vehiculo con ese Modelo proporcionado.");
+                    MessageBox.Show("No se encontro un Vehiculo con ese Modelo proporcionado.", "Dato inexistente", MessageBoxButtons.OK);
                     MostrarVehiculos();
                 }
             }
@@ -319,7 +349,7 @@ namespace Proyecto_Automoviles_1
 
                 if (buscador.Text == string.Empty)
                 {
-                    MessageBox.Show("Ingrese ID que busca, por favor.");
+                    MessageBox.Show("Ingrese el modelo que busca, por favor.", "Buscador vacio:", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -343,14 +373,14 @@ namespace Proyecto_Automoviles_1
                     if (!encontrado)
                     {
                         buscador.Text = string.Empty;
-                        MessageBox.Show("No se encontro un Vehiculo con el ID proporcionado.");
+                        MessageBox.Show("No se encontro un Vehiculo con el ID proporcionado.", "Dato inexistente", MessageBoxButtons.OK);
                         MostrarVehiculos();
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("Solo se pueden introducir numeros enteros.");
+                MessageBox.Show("Solo se pueden introducir numeros enteros.","Dato erroneo:", MessageBoxButtons.OK);
             }
         }
         //boton para ordenar por el precio ascendente y descendente
@@ -371,7 +401,7 @@ namespace Proyecto_Automoviles_1
             }
             else
             {
-                MessageBox.Show("Da click en la opcion Ascendente o la Descendente");
+                MessageBox.Show("Da click en la opcion Ascendente o la Descendente", "Falta de seleccion:", MessageBoxButtons.OK);
             }
         }
         private void ordenarPreciodescendente()

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Proyecto_Automoviles_1
 {
@@ -18,6 +19,8 @@ namespace Proyecto_Automoviles_1
         bool sidebarExpand;
         Queue colas = new Queue();
         int id = 0;
+        int idSeleccionado = 0;
+
         //
         private NodoCola _primero;
         private NodoCola _ultimo;
@@ -122,27 +125,34 @@ namespace Proyecto_Automoviles_1
             }
             else
             {
-                MessageBox.Show("Debe de ingresar datos en todos los campos", "Ok",MessageBoxButtons.OK);
+                MessageBox.Show("Debe de ingresar datos en todos los campos", "Llenado vacio",MessageBoxButtons.OK);
             }
         }
         public void agregarCola()
         {
-            string modelo = txtModelo.Text;
-            string marca = txtMarca.Text;
-            string year = txtAño.Text;
-            string combustible = txtCombustible.Text;
-            int precio = Convert.ToInt32(txtPrecio.Text);
-            modelVechiculo vechiculoagregado = new modelVechiculo
+            try
             {
-                Id = ++id,
-                modelo = modelo,
-                marca = marca,
-                yeart = year,
-                combustible = combustible,
-                precio = precio
-            };
-            IngresarEnCola(vechiculoagregado);
-            
+                string modelo = txtModelo.Text;
+                string marca = txtMarca.Text;
+                string year = txtAño.Text;
+                string combustible = txtCombustible.Text;
+                int precio = Convert.ToInt32(txtPrecio.Text);
+                modelVechiculo vechiculoagregado = new modelVechiculo
+                {
+                    Id = ++id,
+                    modelo = modelo,
+                    marca = marca,
+                    yeart = year,
+                    combustible = combustible,
+                    precio = precio
+                };
+                IngresarEnCola(vechiculoagregado);
+            }
+            catch
+            {
+                MessageBox.Show("Debe de ingresar Correctamente el precio del Vehiculo.", "Ingreso Erroneo", MessageBoxButtons.OK);
+            }
+
         }
         public bool IngresarEnCola(modelVechiculo mvechiculo)
         {
@@ -210,8 +220,127 @@ namespace Proyecto_Automoviles_1
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Pop();
+            if (_ultimo != null) {
+                Pop();
+                mostrarCola();
+            } 
+            else
+            {
+                MessageBox.Show("No hay Registros que ELIMINAR.", "Cola vacia", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
             mostrarCola();
+            Limpiar();
+        }
+
+        public void Encolar(modelVechiculo vehiculo)
+        {
+            NodoCola nuevoNodo = new NodoCola(vehiculo);
+
+            if (_ultimo == null)
+            {
+                _primero = nuevoNodo;
+                _ultimo = nuevoNodo;
+            }
+            else
+            {
+                _ultimo.setSiguiente(nuevoNodo);
+                _ultimo = nuevoNodo;
+            }
+        }
+        public bool Desencolar(string cancion)
+        {
+            Colas colaAuxiliar = new Colas();
+            bool encontrado = false;
+
+            while (_primero != null)
+            {
+                modelVechiculo actual = Pop();
+
+                if (actual.modelo == cancion)
+                {
+                    encontrado = true;
+                }
+                else
+                {
+                    colaAuxiliar.Encolar(actual);
+                }
+            }
+
+            while (!colaAuxiliar.VaciaCola())
+            {
+                Encolar(colaAuxiliar.DesencolarBuscar());
+            }
+
+            return encontrado;
+        }
+
+        public modelVechiculo DesencolarBuscar()
+        {
+            if (VaciaCola())
+            {
+                return null;
+            }
+
+            modelVechiculo datoDesencolado = _primero.getVehiculo();
+            _primero = _primero.getSiguente();
+
+            if (_primero == null)
+            {
+                _ultimo = null;
+            }
+            Colas colaAuxiliar = new Colas();
+            while (_primero != null)
+            {
+                colaAuxiliar.Encolar(DesencolarBuscar());
+            }
+            while (!colaAuxiliar.VaciaCola())
+            {
+                Encolar(colaAuxiliar.DesencolarBuscar());
+            }
+
+            return datoDesencolado;
+        }
+        public bool Modificar(string vehiculo, modelVechiculo modelVechiculo)
+        {
+            bool encontrado = false;
+
+            Colas colaAuxiliar = new Colas();
+
+            while (!VaciaCola())
+            {
+                modelVechiculo vehiculoActual = DesencolarBuscar();
+
+                if (vehiculoActual.modelo == vehiculo)
+                {
+                    encontrado = true;
+                    vehiculoActual = modelVechiculo;
+                }
+
+                colaAuxiliar.Encolar(vehiculoActual);
+            }
+            while (!colaAuxiliar.VaciaCola())
+            {
+                Encolar(colaAuxiliar.DesencolarBuscar());
+            }
+
+            return encontrado;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+                
+            //    Modificar();
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Error.","Error.",MessageBoxButtons.OK);
+            //}
         }
     }
 }
