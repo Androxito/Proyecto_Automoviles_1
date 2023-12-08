@@ -33,14 +33,20 @@
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.menuButton = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnMatrices = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.sidebarTimer = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvehiculolista = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,28 +61,25 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.menuButton = new System.Windows.Forms.PictureBox();
-            this.btnMatrices = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAscender = new System.Windows.Forms.Button();
+            this.btnDescender = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.erpError)).BeginInit();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvehiculolista)).BeginInit();
             this.SuspendLayout();
             // 
             // erpError
@@ -122,6 +125,18 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Menu";
             // 
+            // menuButton
+            // 
+            this.menuButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuButton.Image = global::Proyecto_Automoviles_1.Properties.Resources.menu__3_;
+            this.menuButton.Location = new System.Drawing.Point(3, 28);
+            this.menuButton.Name = "menuButton";
+            this.menuButton.Size = new System.Drawing.Size(37, 31);
+            this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.menuButton.TabIndex = 0;
+            this.menuButton.TabStop = false;
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnMatrices);
@@ -129,6 +144,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 44);
             this.panel2.TabIndex = 1;
+            // 
+            // btnMatrices
+            // 
+            this.btnMatrices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMatrices.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMatrices.ForeColor = System.Drawing.Color.White;
+            this.btnMatrices.Image = global::Proyecto_Automoviles_1.Properties.Resources.table;
+            this.btnMatrices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMatrices.Location = new System.Drawing.Point(-2, -14);
+            this.btnMatrices.Name = "btnMatrices";
+            this.btnMatrices.Size = new System.Drawing.Size(203, 74);
+            this.btnMatrices.TabIndex = 2;
+            this.btnMatrices.Text = "               Matrices";
+            this.btnMatrices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMatrices.UseVisualStyleBackColor = true;
+            this.btnMatrices.Click += new System.EventHandler(this.btnMatrices_Click);
             // 
             // panel4
             // 
@@ -138,6 +169,22 @@
             this.panel4.Size = new System.Drawing.Size(200, 44);
             this.panel4.TabIndex = 2;
             // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::Proyecto_Automoviles_1.Properties.Resources.list;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(-2, -12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(203, 74);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "               Listas Enlazadas";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.button3);
@@ -146,6 +193,22 @@
             this.panel5.Size = new System.Drawing.Size(200, 44);
             this.panel5.TabIndex = 3;
             // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = global::Proyecto_Automoviles_1.Properties.Resources.battery__1_;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(-2, -11);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(203, 74);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "               Pilas";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button4);
@@ -153,6 +216,22 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(200, 44);
             this.panel6.TabIndex = 4;
+            // 
+            // button4
+            // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Image = global::Proyecto_Automoviles_1.Properties.Resources.bottle;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(-2, -15);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(203, 74);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "               Colas";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel3
             // 
@@ -168,25 +247,37 @@
             this.panel7.Size = new System.Drawing.Size(194, 32);
             this.panel7.TabIndex = 6;
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.button1.Image = global::Proyecto_Automoviles_1.Properties.Resources.on_off_button__1_;
+            this.button1.Location = new System.Drawing.Point(3, 407);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(37, 43);
+            this.button1.TabIndex = 7;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // sidebarTimer
             // 
             this.sidebarTimer.Interval = 10;
             this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Ticks);
             // 
-            // dataGridView1
+            // dgvehiculolista
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvehiculolista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvehiculolista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Modelo,
             this.Marca,
             this.Combustible,
             this.Precio,
             this.Año});
-            this.dataGridView1.Location = new System.Drawing.Point(209, 258);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(594, 150);
-            this.dataGridView1.TabIndex = 51;
+            this.dgvehiculolista.Location = new System.Drawing.Point(209, 258);
+            this.dgvehiculolista.Name = "dgvehiculolista";
+            this.dgvehiculolista.Size = new System.Drawing.Size(594, 150);
+            this.dgvehiculolista.TabIndex = 51;
             // 
             // Id
             // 
@@ -220,14 +311,14 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(231, 33);
+            this.textBox6.Location = new System.Drawing.Point(688, 29);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 23);
             this.textBox6.TabIndex = 50;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(510, 175);
+            this.textBox5.Location = new System.Drawing.Point(510, 170);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 23);
             this.textBox5.TabIndex = 49;
@@ -235,7 +326,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(402, 45);
+            this.label1.Location = new System.Drawing.Point(402, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 15);
             this.label1.TabIndex = 48;
@@ -243,7 +334,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(510, 42);
+            this.textBox4.Location = new System.Drawing.Point(510, 12);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 23);
             this.textBox4.TabIndex = 47;
@@ -251,7 +342,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(510, 71);
+            this.textBox3.Location = new System.Drawing.Point(510, 63);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 23);
             this.textBox3.TabIndex = 46;
@@ -272,42 +363,35 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(243, 212);
+            this.btnModificar.BackColor = System.Drawing.SystemColors.Info;
+            this.btnModificar.Location = new System.Drawing.Point(691, 62);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 43;
             this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(243, 162);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 42;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(243, 115);
+            this.btnConsultar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConsultar.Location = new System.Drawing.Point(713, 217);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 41;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Text = "Refresh";
+            this.btnConsultar.UseVisualStyleBackColor = false;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(243, 75);
+            this.btnAgregar.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnAgregar.Location = new System.Drawing.Point(222, 11);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 40;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click_1);
             // 
             // label4
@@ -323,7 +407,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(404, 175);
+            this.label3.Location = new System.Drawing.Point(404, 170);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 15);
@@ -343,100 +427,54 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(399, 74);
+            this.label6.Location = new System.Drawing.Point(399, 66);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 15);
             this.label6.TabIndex = 36;
             this.label6.Text = "Modelo";
             // 
-            // menuButton
+            // btnAscender
             // 
-            this.menuButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.menuButton.Image = global::Proyecto_Automoviles_1.Properties.Resources.menu__3_;
-            this.menuButton.Location = new System.Drawing.Point(3, 28);
-            this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(37, 31);
-            this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.menuButton.TabIndex = 0;
-            this.menuButton.TabStop = false;
-            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
+            this.btnAscender.BackColor = System.Drawing.Color.Coral;
+            this.btnAscender.Location = new System.Drawing.Point(222, 137);
+            this.btnAscender.Name = "btnAscender";
+            this.btnAscender.Size = new System.Drawing.Size(75, 23);
+            this.btnAscender.TabIndex = 52;
+            this.btnAscender.Text = "Ascendente";
+            this.btnAscender.UseVisualStyleBackColor = false;
+            this.btnAscender.Click += new System.EventHandler(this.btnAscender_Click);
             // 
-            // btnMatrices
+            // btnDescender
             // 
-            this.btnMatrices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMatrices.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMatrices.ForeColor = System.Drawing.Color.White;
-            this.btnMatrices.Image = global::Proyecto_Automoviles_1.Properties.Resources.table;
-            this.btnMatrices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMatrices.Location = new System.Drawing.Point(-2, -14);
-            this.btnMatrices.Name = "btnMatrices";
-            this.btnMatrices.Size = new System.Drawing.Size(203, 74);
-            this.btnMatrices.TabIndex = 2;
-            this.btnMatrices.Text = "               Matrices";
-            this.btnMatrices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMatrices.UseVisualStyleBackColor = true;
-            this.btnMatrices.Click += new System.EventHandler(this.btnMatrices_Click);
+            this.btnDescender.BackColor = System.Drawing.Color.Coral;
+            this.btnDescender.Location = new System.Drawing.Point(222, 187);
+            this.btnDescender.Name = "btnDescender";
+            this.btnDescender.Size = new System.Drawing.Size(75, 23);
+            this.btnDescender.TabIndex = 53;
+            this.btnDescender.Text = "Descender";
+            this.btnDescender.UseVisualStyleBackColor = false;
+            this.btnDescender.Click += new System.EventHandler(this.btnDescender_Click);
             // 
-            // button2
+            // label7
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::Proyecto_Automoviles_1.Properties.Resources.list;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(-2, -12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(203, 74);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "               Listas Enlazadas";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(688, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 15);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Id:";
             // 
-            // button3
+            // btnEliminar
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::Proyecto_Automoviles_1.Properties.Resources.battery__1_;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(-2, -11);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(203, 74);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "               Pilas";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = global::Proyecto_Automoviles_1.Properties.Resources.bottle;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(-2, -15);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(203, 74);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "               Colas";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.button1.Image = global::Proyecto_Automoviles_1.Properties.Resources.on_off_button__1_;
-            this.button1.Location = new System.Drawing.Point(3, 407);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 43);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnEliminar.BackColor = System.Drawing.Color.LightCoral;
+            this.btnEliminar.Location = new System.Drawing.Point(691, 103);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 42;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // ListasEnlazadas
             // 
@@ -445,7 +483,10 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnDescender);
+            this.Controls.Add(this.btnAscender);
+            this.Controls.Add(this.dgvehiculolista);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label1);
@@ -470,12 +511,12 @@
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvehiculolista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,7 +540,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvehiculolista;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
@@ -514,12 +555,15 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnDescender;
+        private System.Windows.Forms.Button btnAscender;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Proyecto_Automoviles_1.ListasEnlazada;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -93,35 +94,37 @@ namespace Proyecto_Automoviles_1
 
         private void btnAgregar_Click_1(object sender, EventArgs e)
         {
-            string modelo = textBox3.Text;
-            string marca = textBox1.Text;
-            string combustible = textBox2.Text;
-            string año = textBox5.Text;
-            if (double.TryParse(textBox4.Text, out double precio))
-            {
-                Automovil nuevoAuto = new Automovil
+            if (textBox1.Text != string.Empty && textBox2.Text != string.Empty && textBox3.Text != string.Empty && textBox4.Text != string.Empty && textBox5.Text != string.Empty) {
+                string modelo = textBox3.Text;
+                string marca = textBox1.Text;
+                string combustible = textBox2.Text;
+                string año = textBox5.Text;
+                if (double.TryParse(textBox4.Text, out double precio))
                 {
-                    Id = ++cont,
-                    Modelo = modelo,
-                    Marca = marca,
-                    Combustible = combustible,
-                    Precio = precio,
-                    Año = año
-                };
-                listas.Agregar(nuevoAuto);
+                    Automovil nuevoAuto = new Automovil
+                    {
+                        Id = ++cont,
+                        Modelo = modelo,
+                        Marca = marca,
+                        Combustible = combustible,
+                        Precio = precio,
+                        Año = año
+                    };
+                    listas.Agregar(nuevoAuto);
 
-                ActualizarPantalla();
+                    ActualizarPantalla();
 
-            }
-            else
-            {
-                MessageBox.Show("Ingrese un valor valido para el precio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un valor valido para el precio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             LimpiarDatos();
         }
         public void ActualizarPantalla()
         {
-            dataGridView1.Rows.Clear();
+            dgvehiculolista.Rows.Clear();
 
             Nodo nodoActual = listas.Primero;
 
@@ -129,7 +132,7 @@ namespace Proyecto_Automoviles_1
             {
                 Automovil automovilActual = nodoActual.Automovil;
 
-                dataGridView1.Rows.Add(automovilActual.Id, automovilActual.Modelo, automovilActual.Marca, automovilActual.Combustible, automovilActual.Precio, automovilActual.Año);
+                dgvehiculolista.Rows.Add(automovilActual.Id, automovilActual.Modelo, automovilActual.Marca, automovilActual.Combustible, automovilActual.Precio, automovilActual.Año);
 
                 nodoActual = nodoActual.Siguiente;
             }
@@ -141,6 +144,7 @@ namespace Proyecto_Automoviles_1
             textBox3.Clear();
             textBox4.Clear();
             textBox5.Clear();
+            textBox6.Clear();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -181,11 +185,24 @@ namespace Proyecto_Automoviles_1
             {
                 MessageBox.Show("Ingrese un valor en la casilla ID para realizar la eliminacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAscender_Click(object sender, EventArgs e)
+        {
+            listas.OrdenarPrecioAscendente();
+            ActualizarPantalla();
+        }
+
+        private void btnDescender_Click(object sender, EventArgs e)
+        {
+            listas.OrdenarPrecioDesendente();
+            ActualizarPantalla();
         }
     }
 }

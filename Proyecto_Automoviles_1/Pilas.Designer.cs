@@ -179,6 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -194,6 +195,7 @@
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtMarca);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Pilas";
             this.Text = "Pilas";
             this.panel1.ResumeLayout(false);

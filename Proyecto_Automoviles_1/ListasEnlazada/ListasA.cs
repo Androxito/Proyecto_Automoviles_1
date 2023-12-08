@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Proyecto_Automoviles_1.ListasEnlazada
 {
@@ -44,19 +45,25 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
         {
             Nodo nodoActual = Primero;
             Nodo nodoAnterior = null;
-
-            while (nodoActual != null && nodoActual.Automovil.Id != id)
+            if(Primero != null)
             {
-                nodoAnterior = nodoActual;
-                nodoActual = nodoActual.Siguiente;
-            }
-            if (nodoActual != null)
-            {
-                Primero = nodoActual.Siguiente;
+                while (nodoActual != null && nodoActual.Automovil.Id != id)
+                {
+                    nodoAnterior = nodoActual;
+                    nodoActual = nodoActual.Siguiente;
+                }
+                if (nodoActual != null)
+                {
+                    Primero = nodoActual.Siguiente;
+                }
+                else
+                {
+                    nodoAnterior.Siguiente = nodoActual.Siguiente;
+                }
             }
             else
             {
-                nodoAnterior.Siguiente = nodoActual.Siguiente;
+                MessageBox.Show("Error no hay nada que eliminar","Error", MessageBoxButtons.OK);
             }
         }
         public void Editar(int id, string nuevoModelo, string nuevaMarca, string nuevoCombustible, double nuevoPrecio, string nuevoAño)
@@ -90,17 +97,20 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
                 while (actual != null && actual.Siguiente != siguiente)
                 {
                     Nodo siguienteNodo = actual.Siguiente;
-                    if (actual.Automovil.Precio < siguiente.Automovil.Precio)
+                    if (actual.Automovil.Precio < siguienteNodo.Automovil.Precio)
                     {
+
                         Automovil temp = actual.Automovil;
                         actual.Automovil = siguienteNodo.Automovil;
                         siguienteNodo.Automovil = temp;
 
                         intercambio = true;
                     }
+
                     actual = actual.Siguiente;
                 }
                 siguiente = actual;
+
             } while (intercambio);
 
         }
@@ -118,7 +128,7 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
                 while (actual != null && actual.Siguiente != siguiente)
                 {
                     Nodo siguienteNodo = actual.Siguiente;
-                    if (actual.Automovil.Precio > siguiente.Automovil.Precio)
+                    if (actual.Automovil.Precio > siguienteNodo.Automovil.Precio)
                     {
                         Automovil temp = actual.Automovil;
                         actual.Automovil = siguienteNodo.Automovil;
@@ -126,9 +136,11 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
 
                         intercambio = true;
                     }
+
                     actual = actual.Siguiente;
                 }
                 siguiente = actual;
+
             } while (intercambio);
         }
         // Dentro de la clase ListasA
