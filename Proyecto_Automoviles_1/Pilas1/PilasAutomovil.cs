@@ -14,99 +14,112 @@ namespace Proyecto_Automoviles_1.Pilas1
 {
     public class PilasAutomovil
     {
+        int id = 0;
         public Nodo Inicio;
-        int cont = 0;
-
         private DataGridView dataGridView1;
+        private Stack<Nodo> pilaAuxiliar;
 
         public PilasAutomovil(DataGridView dataGridView)
         {
             Inicio = null;
             dataGridView1 = dataGridView;
+            
         }
-        public void AgregarInicio(Automovil datosAuto)
-        {
-            int nuevoId = Obtenerultimo() + 1;
 
-            Automovil nuevoAuto = new Automovil
-                {
-                    Id = ++cont,
-                    Modelo = datosAuto.Modelo,
-                    Marca = datosAuto.Marca,
-                    Combustible = datosAuto.Combustible,
-                    Precio = datosAuto.Precio,
-                    Año = datosAuto.Año
-                };
-            Nodo nuevoNodo = new Nodo(nuevoAuto);
+        public void AgregarAlInicio(Automovil vehiculo)
+        {
+            int nuevoId = ObtenerUltimoId() + 1;
+            Automovil newautomovil = new Automovil(nuevoId, vehiculo.Precio, vehiculo.Modelo, vehiculo.Marca, vehiculo.Año, vehiculo.Combustible);
+            Nodo nuevoNodo = new Nodo(newautomovil);
             nuevoNodo.Siguiente = Inicio;
             Inicio = nuevoNodo;
-            ActualizarPantalla();
+            ActualizarDataGridView();
         }
-        private void ActualizarPantalla()
+
+        private void ActualizarDataGridView()
         {
             dataGridView1.Rows.Clear();
-
             Nodo actual = Inicio;
-            while(actual != null)
+            while (actual != null)
             {
-                dataGridView1.Rows.Add(actual.Automovil.Id,actual.Automovil.Modelo,actual.Automovil.Marca,actual.Automovil.Combustible,actual.Automovil.Precio,actual.Automovil.Año);
+                dataGridView1.Rows.Add(actual.Automovil.Id, actual.Automovil.Marca, actual.Automovil.Modelo, actual.Automovil.Precio);
                 actual = actual.Siguiente;
             }
         }
-        private int Obtenerultimo()
-        {
-            Nodo ultimoN = Inicio;
-            int ultimoId= 0;
 
-            while(ultimoN != null)
+        private int ObtenerUltimoId()
+        {
+            Nodo ultimoNodo = Inicio;
+            int ultimoId = 0;
+            while (ultimoNodo != null)
             {
-                if(ultimoN.Automovil.Id > ultimoId)
+                if (ultimoNodo.Automovil.Id > ultimoId)
                 {
-                    ultimoId = ultimoN.Automovil.Id;
+                    ultimoId = ultimoNodo.Automovil.Id;
                 }
-                ultimoN = ultimoN.Siguiente;
+                ultimoNodo = ultimoNodo.Siguiente;
             }
             return ultimoId;
         }
+
         public void MostrarLista()
         {
             Nodo actual = Inicio;
-            while(actual != null) {
-
-                Console.WriteLine($"Modelo {actual.Automovil.Modelo}, Marca: {actual.Automovil.Marca},Combustible: {actual.Automovil.Combustible}, Precio: {actual.Automovil.Precio}, Año: {actual.Automovil.Año}");
+            while (actual != null)
+            {
+                Console.WriteLine($"Marca: {actual.Automovil.Marca}, Modelo: {actual.Automovil.Modelo}, Precio: {actual.Automovil.Precio}");
                 actual = actual.Siguiente;
-
             }
         }
-        public void EliminarP()
+
+        public void EliminarPrimero()
         {
-            if(Inicio == null)
+            if (Inicio == null)
             {
+                MessageBox.Show("La lista está vacía. No hay elementos para eliminar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            pilaAuxiliar.Push(new Nodo(Inicio.Automovil));
             Inicio = Inicio.Siguiente;
-
+            ActualizarDataGridView();
+            MessageBox.Show("Primer elemento eliminado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        public void Editar(string modeloAnterior, string nuevoModelo, string nuevaMarca, string nuevoCombustible, double nuevoPrecio, string nuevoAño)
+        public void Editar(int posicionSeleccionada, string nuevaMarca, string nuevoModelo, double nuevoPrecio, string naño, string ncombustible)
         {
-            Nodo actual = Inicio;
+            Nodo actual = ObtenerNodoEnPosicion(posicionSeleccionada);
 
-            while(actual != null && actual.Automovil.Modelo != modeloAnterior )
+            if (actual != null)
             {
-                actual = actual.Siguiente;
-            }
-            if(actual != null)
-            {
-                actual.Automovil.Modelo = nuevoModelo;
+                pilaAuxiliar.Push(new Nodo(actual.Automovil));
+
                 actual.Automovil.Marca = nuevaMarca;
-                actual.Automovil.Combustible = nuevoCombustible;
+                actual.Automovil.Modelo = nuevoModelo;
                 actual.Automovil.Precio = nuevoPrecio;
-                actual.Automovil.Año = nuevoAño;
+                actual.Automovil.Año = naño;
+                actual.Automovil.Combustible = ncombustible;
+
+                ActualizarDataGridView();
+                Console.WriteLine("Sneaker editado correctamente.");
             }
             else
             {
-                Console.WriteLine($"No se encontro un Automovil con el modelo{modeloAnterior} en la lista");
+                MessageBox.Show($"No se encontró un Sneaker en la posición {posicionSeleccionada} en la lista.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private Nodo ObtenerNodoEnPosicion(int posicion)
+        {
+            Nodo actual = Inicio;
+
+            for (int i = 0; i < posicion && actual != null; i++)
+            {
+                if (actual.Automovil.Id != id) {
+                    actual = actual.Siguiente;
+                }
+            }
+
+            return actual;
+        }
     }
+    
 }

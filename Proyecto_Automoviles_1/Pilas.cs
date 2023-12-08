@@ -1,6 +1,7 @@
 ﻿using Proyecto_Automoviles_1.ListasEnlazada;
 using Proyecto_Automoviles_1.Pilas1;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,13 +17,22 @@ namespace Proyecto_Automoviles_1
     {
         private PilasAutomovil ListasA;
         int cont = 0;
+
+        
         public Pilas()
         {
             InitializeComponent();
-
+            ListasA = new PilasAutomovil(dgpila);
             DatosPantalla();
         }
-
+        private void Limpiado()
+        {
+            txtModelo.Clear();
+            txtMarca.Clear();
+            txtPrecio.Clear();
+            txtAño.Clear();
+            txtCombustible.Clear();
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string modelo = txtModelo.Text;
@@ -30,60 +40,51 @@ namespace Proyecto_Automoviles_1
             string combustible = txtCombustible.Text;
             string año = txtAño.Text;
 
-            if(!double.TryParse(txtPrecio.Text, out double precio))
+
+            if (!double.TryParse(txtPrecio.Text, out double precio))
             {
-                MessageBox.Show("Por favor ingrese un precio valido");
+                MessageBox.Show("Por favor, ingrese un precio válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             try
             {
-                Automovil nuevoAuto = new Automovil
-                {
-                    Id = ++cont,
-                    Modelo = modelo,
-                    Marca = marca,
-                    Combustible = combustible,
-                    Precio = precio,
-                    Año = año
-                };
-
-
-                ListasA.AgregarInicio(nuevoAuto);
-
+                Automovil newauto = new Automovil(precio,modelo,marca,año,combustible);
+                ListasA.AgregarAlInicio(newauto);
                 ActualizarPantalla();
+                Limpiado();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al agregar el Automovil: {ex.Message}");
-
+                MessageBox.Show($"Error al agregar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void ActualizarPantalla()
         {
-            dataGridView1.Rows.Clear();
+            dgpila.Rows.Clear();
 
             Nodo actual = ListasA.Inicio;
             while(actual != null )
             {
-                dataGridView1.Rows.Add(actual.Automovil.Id, actual.Automovil.Modelo, actual.Automovil.Marca, actual.Automovil.Combustible, actual.Automovil.Precio, actual.Automovil.Año);
+                dgpila.Rows.Add(actual.Automovil.Id, actual.Automovil.Modelo, actual.Automovil.Marca, actual.Automovil.Combustible, actual.Automovil.Precio, actual.Automovil.Año);
                 actual = actual.Siguiente;
             }
         }
         private void DatosPantalla()
         {
-            dataGridView1.Columns.Add("Id", "Id");
-            dataGridView1.Columns.Add("Modelo", "Modelo");
-            dataGridView1.Columns.Add("Marca", "Marca");
-            dataGridView1.Columns.Add("Combustible", "Combustible");
-            dataGridView1.Columns.Add("Precio", "Precio");
-            dataGridView1.Columns.Add("Año", "Año");
+            dgpila.Columns.Add("Id", "Id");
+            dgpila.Columns.Add("Modelo", "Modelo");
+            dgpila.Columns.Add("Marca", "Marca");
+            dgpila.Columns.Add("Combustible", "Combustible");
+            dgpila.Columns.Add("Precio", "Precio");
+            dgpila.Columns.Add("Año", "Año");
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if(ListasA.Inicio != null)
             {
-                ListasA.EliminarP();
+                ListasA.EliminarPrimero();
 
                 ActualizarPantalla();
             }
@@ -96,9 +97,9 @@ namespace Proyecto_Automoviles_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.SelectedRows.Count > 0)
+            if(dgpila.SelectedRows.Count > 0)
             {
-                int selectIndex = dataGridView1.SelectedRows[0].Index;
+                int selectIndex = dgpila.SelectedRows[0].Index;
 
                 Nodo actual = ListasA.Inicio;
                 for(int i = 0; i< selectIndex && actual != null; i++)
@@ -136,6 +137,11 @@ namespace Proyecto_Automoviles_1
                 MessageBox.Show("Seleccione una fila para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void dgpila_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

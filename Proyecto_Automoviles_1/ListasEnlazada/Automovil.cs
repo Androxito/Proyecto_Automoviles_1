@@ -8,6 +8,31 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
 {
     public class Automovil
     {
+        private int nuevoId;
+
+        public Automovil()
+        {
+            
+        }
+        public Automovil(double precio, string modelo, string marca, string año, string combustible)
+        {
+            Precio = precio;
+            Modelo = modelo;
+            Marca = marca;
+            Año = año;
+            Combustible = combustible;
+        }
+
+        public Automovil(int nuevoId, double precio, string modelo, string marca, string año, string combustible)
+        {
+            this.nuevoId = nuevoId;
+            Precio = precio;
+            Modelo = modelo;
+            Marca = marca;
+            Año = año;
+            Combustible = combustible;
+        }
+
         public int Id { get; set; }
 
         public string Modelo { get; set; }
@@ -19,26 +44,6 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
         public double Precio { get; set; }
         public string Año { get; set; }
 
-        /*
-        public Automovil(int id, string modelo, string marca, string combustible, double precio, string año)
-        {
-            Id = id;
-            Modelo = modelo;
-            Marca = marca;
-            Combustible = combustible;
-            Año = año;
-            Precio = precio;
-
-        }
-        public Automovil(string modelo, string marca, string combustible, double precio, string año)
-        {
-            Id = 0;
-            Modelo = modelo;
-            Marca = marca;
-            Combustible = combustible;
-            Año = año;
-
-            Precio = precio;
-        }*/
+        
     }
 }
