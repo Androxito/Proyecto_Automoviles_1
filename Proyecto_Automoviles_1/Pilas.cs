@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Proyecto_Automoviles_1.ListasEnlazada;
+using Proyecto_Automoviles_1.Pilas1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,147 +9,132 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections;
 
 namespace Proyecto_Automoviles_1
 {
     public partial class Pilas : Form
     {
-        bool sidebarExpand;
-
+        private PilasAutomovil ListasA;
+        int cont = 0;
         public Pilas()
         {
             InitializeComponent();
+
+            DatosPantalla();
         }
 
-        private void sidebarTimer_Ticks(object sender, EventArgs e)
-        {
-            if (sidebarExpand)
-            {
-                sidebar.Width -= 10;
-                if (sidebar.Width == sidebar.MinimumSize.Width)
-                {
-                    sidebarExpand = false;
-                    sidebarTimer.Stop();
-                }
-            }
-            else
-            {
-                sidebar.Width += 10;
-                if (sidebar.Width == sidebar.MaximumSize.Width)
-                {
-                    sidebarExpand = true;
-                    sidebarTimer.Stop();
-                }
-            }
-        }
-
-        private void menuButton_Click(object sender, EventArgs e)
-        {
-            sidebarTimer.Start();
-
-        }
-
-        private void btnMatrices_Click(object sender, EventArgs e)
-        {
-            Matrices ventana = new Matrices();
-            ventana.Show();
-
-            this.Hide();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ListasEnlazadas ventana = new ListasEnlazadas();
-            ventana.Show();
-
-            this.Hide();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Pilas ventana = new Pilas();
-            ventana.Show();
-            
-            this.Hide();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Colas ventana = new Colas();
-            ventana.Show();
-
-
-            this.Hide();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-        public void ListarPila()
-        {
-            lstPila.Items.Clear();
-            if (miPila.Count > 0)
-            {
-                foreach(string pila in miPila)
-                {
-                    lstPila.Items.Add(pila);
-                }
-            }
-           
-        }
-        Stack miPila = new Stack();//Instancio mi objeto miPila
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if(txtPila.Text != "")
+            string modelo = txtModelo.Text;
+            string marca = txtMarca.Text;
+            string combustible = txtCombustible.Text;
+            string año = txtAño.Text;
+
+            if(!double.TryParse(txtPrecio.Text, out double precio))
             {
-                miPila.Push(txtPila.Text);
-                txtPila.Text = "";
-                txtPila.Focus();
-                MessageBox.Show("Todos los elementos se ingresaron a la pila");
-                ListarPila();
-            }  
-            if(txtMarca.Text != "")
-            {
-                miPila.Push(txtMarca.Text);
-                txtMarca.Text = "";
-                txtMarca.Focus();
-                ListarPila();
+                MessageBox.Show("Por favor ingrese un precio valido");
+                return;
             }
-            if(txtAño.Text != "")
+            try
             {
-                miPila.Push(txtAño.Text);
-                txtAño.Text = "";
-                txtAño.Focus();
-                ListarPila();
+                Automovil nuevoAuto = new Automovil
+                {
+                    Id = ++cont,
+                    Modelo = modelo,
+                    Marca = marca,
+                    Combustible = combustible,
+                    Precio = precio,
+                    Año = año
+                };
+
+
+                ListasA.AgregarInicio(nuevoAuto);
+
+                ActualizarPantalla();
             }
-            if(txtCombustible.Text!= "")
+            catch (Exception ex)
             {
-                miPila.Push(txtCombustible.Text);
-                txtCombustible.Text = "";
-                txtCombustible.Focus();
-                ListarPila();
+                MessageBox.Show($"Error al agregar el Automovil: {ex.Message}");
+
             }
         }
-
-        private void btnQuitar_Click(object sender, EventArgs e)
+        private void ActualizarPantalla()
         {
-            if(miPila.Count > 0)
-            {
-                miPila.Pop();
-                MessageBox.Show("Se elimino el nombre a la pila");
-                ListarPila();
+            dataGridView1.Rows.Clear();
 
+            Nodo actual = ListasA.Inicio;
+            while(actual != null )
+            {
+                dataGridView1.Rows.Add(actual.Automovil.Id, actual.Automovil.Modelo, actual.Automovil.Marca, actual.Automovil.Combustible, actual.Automovil.Precio, actual.Automovil.Año);
+                actual = actual.Siguiente;
+            }
+        }
+        private void DatosPantalla()
+        {
+            dataGridView1.Columns.Add("Id", "Id");
+            dataGridView1.Columns.Add("Modelo", "Modelo");
+            dataGridView1.Columns.Add("Marca", "Marca");
+            dataGridView1.Columns.Add("Combustible", "Combustible");
+            dataGridView1.Columns.Add("Precio", "Precio");
+            dataGridView1.Columns.Add("Año", "Año");
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(ListasA.Inicio != null)
+            {
+                ListasA.EliminarP();
+
+                ActualizarPantalla();
             }
             else
             {
-                MessageBox.Show("La pila esta vacia");
+                MessageBox.Show("La lista está vacía. No hay elementos para eliminar.");
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.SelectedRows.Count > 0)
+            {
+                int selectIndex = dataGridView1.SelectedRows[0].Index;
+
+                Nodo actual = ListasA.Inicio;
+                for(int i = 0; i< selectIndex && actual != null; i++)
+                {
+                    actual = actual.Siguiente;
+                }
+                if(actual != null)
+                {
+                    string nuevoModelo = txtModelo.Text;
+                    string nuevaMarca = txtMarca.Text;
+                    string nuevoCombustible = txtCombustible.Text;
+                    double nuevoPrecio;
+                    string nuevoAño = txtAño.Text;
+
+                    if(double.TryParse(txtPrecio.Text,out nuevoPrecio))
+                    {
+                        actual.Automovil.Modelo = nuevoModelo;
+                        actual.Automovil.Marca = nuevaMarca;
+                        actual.Automovil.Combustible = nuevoCombustible;
+                        actual.Automovil.Precio = nuevoPrecio;
+                        actual.Automovil.Año = nuevoAño;
+
+
+                        ActualizarPantalla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese un valor válido para el precio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }
