@@ -71,6 +71,11 @@
             this.btnDescender = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.buscador = new System.Windows.Forms.TextBox();
+            this.rmodelo = new System.Windows.Forms.RadioButton();
+            this.rprecio = new System.Windows.Forms.RadioButton();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.erpError)).BeginInit();
             this.sidebar.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -375,7 +380,7 @@
             // btnConsultar
             // 
             this.btnConsultar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnConsultar.Location = new System.Drawing.Point(713, 217);
+            this.btnConsultar.Location = new System.Drawing.Point(691, 217);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 41;
@@ -386,7 +391,7 @@
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnAgregar.Location = new System.Drawing.Point(222, 11);
+            this.btnAgregar.Location = new System.Drawing.Point(310, 10);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 40;
@@ -437,7 +442,7 @@
             // btnAscender
             // 
             this.btnAscender.BackColor = System.Drawing.Color.Coral;
-            this.btnAscender.Location = new System.Drawing.Point(222, 137);
+            this.btnAscender.Location = new System.Drawing.Point(222, 197);
             this.btnAscender.Name = "btnAscender";
             this.btnAscender.Size = new System.Drawing.Size(75, 23);
             this.btnAscender.TabIndex = 52;
@@ -448,7 +453,7 @@
             // btnDescender
             // 
             this.btnDescender.BackColor = System.Drawing.Color.Coral;
-            this.btnDescender.Location = new System.Drawing.Point(222, 187);
+            this.btnDescender.Location = new System.Drawing.Point(222, 226);
             this.btnDescender.Name = "btnDescender";
             this.btnDescender.Size = new System.Drawing.Size(75, 23);
             this.btnDescender.TabIndex = 53;
@@ -476,6 +481,59 @@
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(219, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 15);
+            this.label8.TabIndex = 64;
+            this.label8.Text = "Buscar por:";
+            // 
+            // buscador
+            // 
+            this.buscador.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buscador.ForeColor = System.Drawing.Color.Blue;
+            this.buscador.Location = new System.Drawing.Point(222, 119);
+            this.buscador.Name = "buscador";
+            this.buscador.Size = new System.Drawing.Size(100, 23);
+            this.buscador.TabIndex = 63;
+            // 
+            // rmodelo
+            // 
+            this.rmodelo.AutoSize = true;
+            this.rmodelo.BackColor = System.Drawing.Color.MediumOrchid;
+            this.rmodelo.Location = new System.Drawing.Point(222, 88);
+            this.rmodelo.Name = "rmodelo";
+            this.rmodelo.Size = new System.Drawing.Size(67, 19);
+            this.rmodelo.TabIndex = 62;
+            this.rmodelo.TabStop = true;
+            this.rmodelo.Text = "Modelo";
+            this.rmodelo.UseVisualStyleBackColor = false;
+            // 
+            // rprecio
+            // 
+            this.rprecio.AutoSize = true;
+            this.rprecio.BackColor = System.Drawing.Color.SpringGreen;
+            this.rprecio.Location = new System.Drawing.Point(222, 64);
+            this.rprecio.Name = "rprecio";
+            this.rprecio.Size = new System.Drawing.Size(59, 19);
+            this.rprecio.TabIndex = 61;
+            this.rprecio.TabStop = true;
+            this.rprecio.Text = "Precio";
+            this.rprecio.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button5.Location = new System.Drawing.Point(222, 154);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 60;
+            this.button5.Text = "Consultar";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // ListasEnlazadas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -483,6 +541,11 @@
             this.BackColor = System.Drawing.Color.DodgerBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.buscador);
+            this.Controls.Add(this.rmodelo);
+            this.Controls.Add(this.rprecio);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnDescender);
             this.Controls.Add(this.btnAscender);
@@ -565,5 +628,10 @@
         private System.Windows.Forms.Button btnAscender;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox buscador;
+        private System.Windows.Forms.RadioButton rmodelo;
+        private System.Windows.Forms.RadioButton rprecio;
+        private System.Windows.Forms.Button button5;
     }
 }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Proyecto_Automoviles_1
 {
@@ -145,6 +146,7 @@ namespace Proyecto_Automoviles_1
             textBox4.Clear();
             textBox5.Clear();
             textBox6.Clear();
+            buscador.Clear();
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
@@ -178,16 +180,58 @@ namespace Proyecto_Automoviles_1
         {
             if (int.TryParse(textBox6.Text, out int idEliminar))
             {
-                listas.Eliminar(idEliminar);
-                ActualizarPantalla();
+                EliminarPorID(idEliminar);
             }
             else
             {
-                MessageBox.Show("Ingrese un valor en la casilla ID para realizar la eliminacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese un valor en la casilla ID para realizar la eliminación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            LimpiarDatos();
+        }
+        //metodo eliminar
+        private void EliminarPorID(int idEliminar)
+        {
+            if (idEliminar <= 0)
+            {
+                MessageBox.Show("Ingrese un valor válido en la casilla ID para realizar la eliminación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-        }
+            Nodo nodoActual = listas.Primero;
+            Nodo nodoAnterior = null;
+            bool encontrado = false;
 
+            while (nodoActual != null)
+            {
+                if (nodoActual.Automovil.Id == idEliminar)
+                {
+                    encontrado = true;
+
+                    // Eliminar el nodo
+                    if (nodoAnterior != null)
+                    {
+                        nodoAnterior.Siguiente = nodoActual.Siguiente;
+                    }
+                    else
+                    {
+                        // Si el nodo a eliminar es el primero
+                        listas.Primero = nodoActual.Siguiente;
+                    }
+
+                    MessageBox.Show($"Vehículo con ID {idEliminar} eliminado correctamente.", "Eliminación Exitosa", MessageBoxButtons.OK);
+                    ActualizarPantalla();
+                    break;
+                }
+
+                nodoAnterior = nodoActual;
+                nodoActual = nodoActual.Siguiente;
+            }
+
+            if (!encontrado)
+            {
+                MessageBox.Show($"No se encontró un vehículo con el ID {idEliminar}.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
@@ -203,6 +247,122 @@ namespace Proyecto_Automoviles_1
         {
             listas.OrdenarPrecioDesendente();
             ActualizarPantalla();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Nodo actual = listas.Primero;
+            if (actual != null)
+            {
+                consultaPrecioModelo();
+            }
+            else
+            {
+                MessageBox.Show("No hay vehiculos ingresados", "Sin Registros", MessageBoxButtons.OK);
+            }
+        }
+        private void consultaPrecioModelo()
+        {
+            if (rprecio.Checked == true && rmodelo.Checked != true)
+            {
+                BuscarVehiculoPrecio();
+            }
+            else if (rprecio.Checked != true && rmodelo.Checked == true)
+            {
+                BuscarVehiculoModelo();
+            }
+            else
+            {
+                MessageBox.Show("Da click en la opcion Ascendente o la Descendente", "Seleccion", MessageBoxButtons.OK);
+            }
+
+        }
+        private void BuscarVehiculoModelo()
+        {
+            if (buscador.Text == string.Empty)
+            {
+                MessageBox.Show("Ingrese el modelo que busca, por favor.", "Buscador vacío:", MessageBoxButtons.OK);
+            }
+            else
+            {
+                string modeloBuscar = buscador.Text;
+                bool encontrado = false;
+
+                // Limpiar el DataGridView
+                dgvehiculolista.Rows.Clear();
+
+                Nodo nodoActual = listas.Primero;
+
+                while (nodoActual != null)
+                {
+                    Automovil automovilActual = nodoActual.Automovil;
+
+                    if (automovilActual.Modelo.Contains(modeloBuscar))
+                    {
+                        encontrado = true;
+                        buscador.Text = string.Empty;
+
+                        // Mostrar el vehículo encontrado en el DataGridView
+                        dgvehiculolista.Rows.Add(automovilActual.Id, automovilActual.Modelo, automovilActual.Marca, automovilActual.Combustible, automovilActual.Precio, automovilActual.Año);
+                    }
+
+                    nodoActual = nodoActual.Siguiente;
+                }
+
+                if (!encontrado)
+                {
+                    buscador.Text = string.Empty;
+                    MessageBox.Show("No se encontró un vehículo con ese modelo proporcionado.", "Dato inexistente", MessageBoxButtons.OK);
+                    ActualizarPantalla();
+                }
+            }
+        }
+        private void BuscarVehiculoPrecio()
+        {
+            try
+            {
+                if (buscador.Text == string.Empty)
+                {
+                    MessageBox.Show("Ingrese el precio que busca, por favor.", "Buscador vacío:", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    double precioBuscar = Convert.ToDouble(buscador.Text);
+                    bool encontrado = false;
+
+                    // Limpiar el DataGridView
+                    dgvehiculolista.Rows.Clear();
+
+                    Nodo nodoActual = listas.Primero;
+
+                    while (nodoActual != null)
+                    {
+                        Automovil automovilActual = nodoActual.Automovil;
+
+                        if (automovilActual.Precio == precioBuscar)
+                        {
+                            encontrado = true;
+                            buscador.Text = string.Empty;
+
+                            // Mostrar el vehículo encontrado en el DataGridView
+                            dgvehiculolista.Rows.Add(automovilActual.Id, automovilActual.Modelo, automovilActual.Marca, automovilActual.Combustible, automovilActual.Precio, automovilActual.Año);
+                        }
+
+                        nodoActual = nodoActual.Siguiente;
+                    }
+
+                    if (!encontrado)
+                    {
+                        buscador.Text = string.Empty;
+                        MessageBox.Show("No se encontró un vehículo con el precio proporcionado.", "Dato inexistente", MessageBoxButtons.OK);
+                        ActualizarPantalla();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Solo se pueden introducir números para la búsqueda por precio.", "Dato erróneo:", MessageBoxButtons.OK);
+            }
         }
     }
 }
