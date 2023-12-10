@@ -478,6 +478,7 @@
             this.dgVehiculo.Name = "dgVehiculo";
             this.dgVehiculo.Size = new System.Drawing.Size(464, 171);
             this.dgVehiculo.TabIndex = 60;
+            this.dgVehiculo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVehiculo_CellClick);
             // 
             // IDs
             // 
@@ -540,6 +541,7 @@
             this.Controls.Add(this.sidebar);
             this.Name = "Matrices";
             this.Text = "Matrices";
+            this.Load += new System.EventHandler(this.Matrices_Load_1);
             this.sidebar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
