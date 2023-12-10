@@ -18,6 +18,9 @@ namespace Proyecto_Automoviles_1
     {
         bool sidebarExpand;
         Queue colas = new Queue();
+
+        Queue colaAuxiliar = new Queue();
+
         int id = 0;
         int idSeleccionado = 0;
 
@@ -236,111 +239,107 @@ namespace Proyecto_Automoviles_1
             Limpiar();
         }
 
-        public void Encolar(modelVechiculo vehiculo)
-        {
-            NodoCola nuevoNodo = new NodoCola(vehiculo);
+        
+       
 
-            if (_ultimo == null)
-            {
-                _primero = nuevoNodo;
-                _ultimo = nuevoNodo;
-            }
-            else
-            {
-                _ultimo.setSiguiente(nuevoNodo);
-                _ultimo = nuevoNodo;
-            }
-        }
-        public bool Desencolar(string cancion)
-        {
-            Colas colaAuxiliar = new Colas();
-            bool encontrado = false;
-
-            while (_primero != null)
-            {
-                modelVechiculo actual = Pop();
-
-                if (actual.modelo == cancion)
-                {
-                    encontrado = true;
-                }
-                else
-                {
-                    colaAuxiliar.Encolar(actual);
-                }
-            }
-
-            while (!colaAuxiliar.VaciaCola())
-            {
-                Encolar(colaAuxiliar.DesencolarBuscar());
-            }
-
-            return encontrado;
-        }
-
-        public modelVechiculo DesencolarBuscar()
-        {
-            if (VaciaCola())
-            {
-                return null;
-            }
-
-            modelVechiculo datoDesencolado = _primero.getVehiculo();
-            _primero = _primero.getSiguente();
-
-            if (_primero == null)
-            {
-                _ultimo = null;
-            }
-            Colas colaAuxiliar = new Colas();
-            while (_primero != null)
-            {
-                colaAuxiliar.Encolar(DesencolarBuscar());
-            }
-            while (!colaAuxiliar.VaciaCola())
-            {
-                Encolar(colaAuxiliar.DesencolarBuscar());
-            }
-
-            return datoDesencolado;
-        }
-        public bool Modificar(string vehiculo, modelVechiculo modelVechiculo)
-        {
-            bool encontrado = false;
-
-            Colas colaAuxiliar = new Colas();
-
-            while (!VaciaCola())
-            {
-                modelVechiculo vehiculoActual = DesencolarBuscar();
-
-                if (vehiculoActual.modelo == vehiculo)
-                {
-                    encontrado = true;
-                    vehiculoActual = modelVechiculo;
-                }
-
-                colaAuxiliar.Encolar(vehiculoActual);
-            }
-            while (!colaAuxiliar.VaciaCola())
-            {
-                Encolar(colaAuxiliar.DesencolarBuscar());
-            }
-
-            return encontrado;
-        }
+        
+        
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-                
-            //    Modificar();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error.","Error.",MessageBoxButtons.OK);
-            //}
+            try
+            {
+                int idBuscado = Convert.ToInt32(buscarPorModelo.Text);
+                if (txtModelo.Text != string.Empty && txtMarca.Text != string.Empty && txtAño.Text != string.Empty && txtCombustible.Text != string.Empty)
+                {
+                    if (!string.IsNullOrEmpty(buscarPorModelo.Text))
+                    {
+                        // Obtener nuevos datos para la edición
+                        string nuevoModelo = txtModelo.Text;
+                        string nuevaMarca = txtMarca.Text;
+                        string nuevoAño = txtAño.Text;
+                        string nuevoCombustible = txtCombustible.Text;
+                        int nuevoPrecio = Convert.ToInt32(txtPrecio.Text);
+
+                        // Crear una instancia del nuevo modeloVehiculo
+                        modelVechiculo nuevoModeloVehiculo = new modelVechiculo
+                        {
+
+                            modelo = nuevoModelo,
+                            marca = nuevaMarca,
+                            yeart = nuevoAño,
+                            combustible = nuevoCombustible,
+                            precio = nuevoPrecio
+                        };
+
+                        // Intentar modificar en la cola
+                        bool modificado = Modificar(idBuscado, nuevoModeloVehiculo);
+
+                        if (modificado)
+                        {
+                            MessageBox.Show("Registro modificado correctamente.", "Modificación Exitosa", MessageBoxButtons.OK);
+                            mostrarCola();
+                            Limpiar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró el vehiculo a modificar.", "ID no encontrado", MessageBoxButtons.OK);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese un ID para buscar y modificar.", "Campo Vacío", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese todos los campos para modificar modificar.", "Campos Vacío", MessageBoxButtons.OK);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Debe de ingresar Correctamente el precio del Vehiculo.", "Ingreso Erroneo", MessageBoxButtons.OK);
+            }
+        }
+        public bool Modificar(int idBuscado, modelVechiculo nuevoModeloVehiculo)
+        {
+            bool encontrado = false;
+
+            // Recorrer la cola y copiar los elementos a la cola auxiliar
+            while (_ultimo != null)
+            {
+                modelVechiculo vehiculoActual = Pop();
+
+                // Verificar si el ID coincide con el buscado
+                if (vehiculoActual.Id == idBuscado)
+                {
+                    // Modificar los datos del vehículo actual
+                    vehiculoActual.modelo = nuevoModeloVehiculo.modelo;
+                    vehiculoActual.marca = nuevoModeloVehiculo.marca;
+                    vehiculoActual.yeart = nuevoModeloVehiculo.yeart;
+                    vehiculoActual.combustible = nuevoModeloVehiculo.combustible;
+                    vehiculoActual.precio = nuevoModeloVehiculo.precio;
+
+                    encontrado = true;
+                }
+
+                // Agregar el vehículo actual a la cola auxiliar
+                colaAuxiliar.Enqueue(vehiculoActual);
+            }
+
+            // Restaurar la cola original con los elementos de la cola auxiliar
+            while (colaAuxiliar.Count > 0)
+            {
+                IngresarEnCola((modelVechiculo)colaAuxiliar.Dequeue());
+            }
+
+            return encontrado;
+        }
+
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

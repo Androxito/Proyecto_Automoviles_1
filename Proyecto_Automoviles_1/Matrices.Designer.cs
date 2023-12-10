@@ -92,36 +92,39 @@
             // 
             // btnOrdenar
             // 
+            this.btnOrdenar.BackColor = System.Drawing.Color.Coral;
             this.btnOrdenar.Location = new System.Drawing.Point(225, 280);
             this.btnOrdenar.Name = "btnOrdenar";
             this.btnOrdenar.Size = new System.Drawing.Size(75, 23);
             this.btnOrdenar.TabIndex = 58;
             this.btnOrdenar.Text = "Ordenar";
-            this.btnOrdenar.UseVisualStyleBackColor = true;
+            this.btnOrdenar.UseVisualStyleBackColor = false;
             this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
             // 
             // descendente
             // 
             this.descendente.AutoSize = true;
+            this.descendente.BackColor = System.Drawing.Color.DarkSalmon;
             this.descendente.Location = new System.Drawing.Point(225, 254);
             this.descendente.Name = "descendente";
             this.descendente.Size = new System.Drawing.Size(89, 17);
             this.descendente.TabIndex = 57;
             this.descendente.TabStop = true;
             this.descendente.Text = "Descendente";
-            this.descendente.UseVisualStyleBackColor = true;
+            this.descendente.UseVisualStyleBackColor = false;
             this.descendente.CheckedChanged += new System.EventHandler(this.descendente_CheckedChanged);
             // 
             // ascendente
             // 
             this.ascendente.AutoSize = true;
+            this.ascendente.BackColor = System.Drawing.Color.DarkSalmon;
             this.ascendente.Location = new System.Drawing.Point(225, 225);
             this.ascendente.Name = "ascendente";
             this.ascendente.Size = new System.Drawing.Size(82, 17);
             this.ascendente.TabIndex = 56;
             this.ascendente.TabStop = true;
             this.ascendente.Text = "Ascendente";
-            this.ascendente.UseVisualStyleBackColor = true;
+            this.ascendente.UseVisualStyleBackColor = false;
             this.ascendente.CheckedChanged += new System.EventHandler(this.ascendente_CheckedChanged);
             // 
             // buscador
@@ -181,42 +184,46 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.BackColor = System.Drawing.SystemColors.Info;
             this.btnModificar.Location = new System.Drawing.Point(356, 130);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 50;
             this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
+            this.btnEliminar.BackColor = System.Drawing.Color.LightSalmon;
             this.btnEliminar.Location = new System.Drawing.Point(356, 86);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 49;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnConsultar
             // 
+            this.btnConsultar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnConsultar.Location = new System.Drawing.Point(225, 138);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
             this.btnConsultar.TabIndex = 48;
             this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.UseVisualStyleBackColor = false;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnAgregar
             // 
+            this.btnAgregar.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnAgregar.Location = new System.Drawing.Point(356, 43);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 47;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtCombustible
@@ -354,6 +361,7 @@
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.menuButton.TabIndex = 0;
             this.menuButton.TabStop = false;
+            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // panel2
             // 
@@ -377,6 +385,7 @@
             this.btnMatrices.Text = "               Matrices";
             this.btnMatrices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMatrices.UseVisualStyleBackColor = true;
+            this.btnMatrices.Click += new System.EventHandler(this.btnMatrices_Click);
             // 
             // panel4
             // 
@@ -400,6 +409,7 @@
             this.button2.Text = "               Listas Enlazadas";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel5
             // 
@@ -423,6 +433,7 @@
             this.button3.Text = "               Pilas";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel6
             // 
@@ -446,10 +457,12 @@
             this.button4.Text = "               Colas";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // sidebarTimer
             // 
             this.sidebarTimer.Interval = 10;
+            this.sidebarTimer.Tick += new System.EventHandler(this.sidebarTimer_Tick);
             // 
             // dgVehiculo
             // 
@@ -500,6 +513,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DodgerBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgVehiculo);
             this.Controls.Add(this.label7);
