@@ -17,5 +17,6 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
             Automovil = automovil;
             Siguiente = null;
         }
+
     }
 }

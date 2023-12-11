@@ -364,5 +364,10 @@ namespace Proyecto_Automoviles_1
                 MessageBox.Show("Solo se pueden introducir números para la búsqueda por precio.", "Dato erróneo:", MessageBoxButtons.OK);
             }
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
