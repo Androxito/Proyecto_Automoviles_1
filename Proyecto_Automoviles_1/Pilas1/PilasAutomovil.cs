@@ -14,7 +14,7 @@ namespace Proyecto_Automoviles_1.Pilas1
 {
     public class PilasAutomovil
     {
-          private static int id = 0;
+        private static int id = 0;
         public Nodo Inicio;
 
         private DataGridView dataGridView1;

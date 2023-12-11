@@ -8,7 +8,7 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
 {
     public class Automovil
     {
-        private int nuevoId;
+        
 
         public Automovil()
         {
@@ -25,7 +25,7 @@ namespace Proyecto_Automoviles_1.ListasEnlazada
 
         public Automovil(int nuevoId, double precio, string modelo, string marca, string año, string combustible)
         {
-            this.nuevoId = nuevoId;
+            Id = nuevoId;
             Precio = precio;
             Modelo = modelo;
             Marca = marca;
